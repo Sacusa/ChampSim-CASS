@@ -43,31 +43,31 @@ extern uint32_t PAGE_TABLE_LATENCY, SWAP_LATENCY;
 #define STLB_LATENCY 8
 
 // L1 INSTRUCTION CACHE
-#define L1I_SET 64
-#define L1I_WAY 8
+#define L1I_SET 1//64
+#define L1I_WAY 1//8
 #define L1I_RQ_SIZE 64
 #define L1I_WQ_SIZE 64 
 #define L1I_PQ_SIZE 64
 #define L1I_MSHR_SIZE 8
-#define L1I_LATENCY 1
+#define L1I_LATENCY 0//1
 
 // L1 DATA CACHE
-#define L1D_SET 64
-#define L1D_WAY 8
+#define L1D_SET 1//64
+#define L1D_WAY 1//8
 #define L1D_RQ_SIZE 64
 #define L1D_WQ_SIZE 64 
 #define L1D_PQ_SIZE 64
 #define L1D_MSHR_SIZE 8
-#define L1D_LATENCY 4 
+#define L1D_LATENCY 0//4 
 
 // L2 CACHE
-#define L2C_SET 512
-#define L2C_WAY 8
+#define L2C_SET 1//512
+#define L2C_WAY 1//8
 #define L2C_RQ_SIZE 32
 #define L2C_WQ_SIZE 32
 #define L2C_PQ_SIZE 32
 #define L2C_MSHR_SIZE 16
-#define L2C_LATENCY 8  // 4 (L1I or L1D) + 8 = 12 cycles
+#define L2C_LATENCY 0//8  // 4 (L1I or L1D) + 8 = 12 cycles
 
 // LAST LEVEL CACHE
 #define LLC_SET NUM_CPUS*2048

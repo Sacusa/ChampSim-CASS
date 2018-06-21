@@ -662,7 +662,7 @@ int main(int argc, char** argv)
         ooo_cpu[i].L2C.fill_level = FILL_L2;
         ooo_cpu[i].L2C.upper_level_icache[i] = &ooo_cpu[i].L1I;
         ooo_cpu[i].L2C.upper_level_dcache[i] = &ooo_cpu[i].L1D;
-        ooo_cpu[i].L2C.lower_level = &uncore.LLC;
+        ooo_cpu[i].L2C.lower_level = &uncore.DRAM;
         ooo_cpu[i].L2C.l2c_prefetcher_initialize();
 
         // SHARED CACHE
@@ -674,8 +674,8 @@ int main(int argc, char** argv)
 
         // OFF-CHIP DRAM
         uncore.DRAM.fill_level = FILL_DRAM;
-        uncore.DRAM.upper_level_icache[i] = &uncore.LLC;
-        uncore.DRAM.upper_level_dcache[i] = &uncore.LLC;
+        uncore.DRAM.upper_level_icache[i] = &ooo_cpu[i].L2C;
+        uncore.DRAM.upper_level_dcache[i] = &ooo_cpu[i].L2C;
         for (uint32_t i=0; i<DRAM_CHANNELS; i++) {
             uncore.DRAM.RQ[i].is_RQ = 1;
             uncore.DRAM.WQ[i].is_WQ = 1;

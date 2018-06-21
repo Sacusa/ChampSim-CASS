@@ -1,0 +1,7 @@
+.vscode/
+bin/
+inc/champsim.h.bak
+obj/
+results_1M/
+results_50M/
+
