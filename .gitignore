@@ -1,5 +1,6 @@
 .vscode/
 bin/
+demo_programs/
 inc/champsim.h.bak
 obj/
 results_1M/
