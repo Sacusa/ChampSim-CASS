@@ -13,6 +13,8 @@ LDFlags =
 libs =
 libDir =
 
+define_no_cache=
+
 
 #************************ DO NOT EDIT BELOW THIS LINE! ************************
 
@@ -21,10 +23,15 @@ ifeq ($(debug),1)
 else
 	debug=
 endif
+ifeq ($(nocache),1)
+	define_no_cache=-D NO_CACHE
+else
+	define_no_cache=
+endif
 inc := $(addprefix -I,$(inc))
 libs := $(addprefix -l,$(libs))
 libDir := $(addprefix -L,$(libDir))
-CFlags += -c $(debug) $(inc) $(libDir) $(libs)
+CFlags += -c $(debug) $(inc) $(libDir) $(libs) $(define_no_cache)
 sources := $(shell find $(srcDir) -name '*.$(srcExt)')
 srcDirs := $(shell find . -name '*.$(srcExt)' -exec dirname {} \; | uniq)
 objects := $(patsubst %.$(srcExt),$(objDir)/%.o,$(sources))

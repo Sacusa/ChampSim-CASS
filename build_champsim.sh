@@ -5,6 +5,8 @@ L1D_PREFETCHER=$2   # prefetcher/*.l1d_pref
 L2C_PREFETCHER=$3   # prefetcher/*.l2c_pref
 LLC_REPLACEMENT=$4  # replacement/*.llc_repl
 NUM_CORE=$5         # tested up to 8-core system
+NO_CACHE=$6
+file_no_cache=""
 
 ############## Some useful macros ###############
 BOLD=$(tput bold)
@@ -70,7 +72,14 @@ cp replacement/${LLC_REPLACEMENT}.llc_repl replacement/llc_replacement.cc
 mkdir -p bin
 rm -f bin/champsim
 make clean
-make
+if [ "$NO_CACHE" = "--no-cache" ]
+then
+	make nocache=1
+	file_no_cache="-nocache"
+else
+	make
+	file_no_cache=""
+fi
 
 # Sanity check
 echo ""
@@ -86,10 +95,10 @@ echo "L1D Prefetcher: ${L1D_PREFETCHER}"
 echo "L2C Prefetcher: ${L2C_PREFETCHER}"
 echo "LLC Replacement: ${LLC_REPLACEMENT}"
 echo "Cores: ${NUM_CORE}"
-BINARY_NAME="${BRANCH}-${L1D_PREFETCHER}-${L2C_PREFETCHER}-${LLC_REPLACEMENT}-${NUM_CORE}core"
+BINARY_NAME="${BRANCH}-${L1D_PREFETCHER}-${L2C_PREFETCHER}-${LLC_REPLACEMENT}-${NUM_CORE}core${file_no_cache}"
 echo "Binary: bin/${BINARY_NAME}${NORMAL}"
 echo ""
-mv bin/champsim bin/${BINARY_NAME}
+mv bin/champsim bin/${BINARY_NAME}${file_no_cache}
 
 
 # Restore to the default configuration
