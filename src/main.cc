@@ -111,6 +111,9 @@ void print_dram_stats()
         cout << endl;
     }
 
+    if (uncore.DRAM.dbus_congested[NUM_TYPES][NUM_TYPES] == 0)
+        return;
+
     uint64_t total_congested_cycle = 0;
     for (uint32_t i=0; i<DRAM_CHANNELS; i++)
         total_congested_cycle += uncore.DRAM.dbus_cycle_congested[i];
