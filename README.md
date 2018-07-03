@@ -5,7 +5,7 @@
 
 # Clone ChampSim repository
 ```
-git clone https://github.com/ChampSim/ChampSim.git
+git clone https://github.com/Sacusa/ChampSim-CASS.git
 ```
 
 # Compile
