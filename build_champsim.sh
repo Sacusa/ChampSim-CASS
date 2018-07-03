@@ -98,7 +98,7 @@ echo "Cores: ${NUM_CORE}"
 BINARY_NAME="${BRANCH}-${L1D_PREFETCHER}-${L2C_PREFETCHER}-${LLC_REPLACEMENT}-${NUM_CORE}core${file_no_cache}"
 echo "Binary: bin/${BINARY_NAME}${NORMAL}"
 echo ""
-mv bin/champsim bin/${BINARY_NAME}${file_no_cache}
+mv bin/champsim bin/${BINARY_NAME}
 
 
 # Restore to the default configuration
