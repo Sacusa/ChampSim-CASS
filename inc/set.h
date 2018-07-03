@@ -209,7 +209,7 @@ public:
 		int lim = ((n | 63) + 1) / 64;
 
 		// bitwise OR the other bits into this set
-		for (int i=0; i<lim; i++) data.bits[i] |= other.data.bits[i];
+		for (volatile int i=0; i<lim; i++) data.bits[i] |= other.data.bits[i];
 	}
 
 	// expand the entire set into the array v, returning the cardinality
